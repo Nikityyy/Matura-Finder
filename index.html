@@ -182,7 +182,7 @@
                 if (allTitles.length > 0) {
                     renderResults(allTitles);
                     searchBar.disabled = false;
-                    searchBar.placeholder = `suche in ${allTitles.length} aufgaben...`;
+                    searchBar.placeholder = `Suche in ${allTitles.length} Aufgaben...`;
                 } else {
                     resultsContainer.innerHTML = '<li class="no-results">keine aufgabendaten gefunden. führen sie das python-skript aus.</li>';
                     searchBar.placeholder = "keine daten";
@@ -218,7 +218,7 @@
                 li.dataset.page = item.page;
                 li.innerHTML = `<span class="result-title">${escapeHtml(item.title)}</span>
                     <div class="result-details">
-                        gefunden in: <span class="result-filename">${escapeHtml(item.filename)}</span> – seite ${item.page}
+                        Gefunden in: <span class="result-filename">${escapeHtml(item.filename)}</span> – Seite ${item.page}
                     </div>`;
                 li.addEventListener('click', handleResultClick);
                 resultsContainer.appendChild(li);
