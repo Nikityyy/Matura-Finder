@@ -40,7 +40,7 @@
         .container {
             width: 100%;
             max-width: 650px;
-            height: 100vh;
+            height: 100svh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -156,12 +156,12 @@
             <svg class="search-icon" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="m15.5 14h-.79l-.28-.27a6.471 6.471 0 0 0 1.57-4.23c0-3.59-2.91-6.5-6.5-6.5s-6.5 2.91-6.5 6.5 2.91 6.5 6.5 6.5c1.61 0 3.09-.59 4.23-1.57l.28.27v.79l5 4.99 1.41-1.41-4.99-5zm-6 0c-1.98 0-3.5-1.52-3.5-3.5s1.52-3.5 3.5-3.5 3.5 1.52 3.5 3.5-1.52 3.5-3.5 3.5z"></path>
             </svg>
-            <input type="search" id="search-bar" placeholder="aufgaben durchsuchen..." disabled>
+            <input type="search" id="search-bar" placeholder="Aufgaben durchsuchen..." disabled>
         </div>
         <div class="results-wrapper">
             <div class="fade-overlay top"></div>
             <ul id="results-container">
-                <li class="no-results">lade daten...</li>
+                <li class="no-results">Lade Daten...</li>
             </ul>
         </div>
     </div>
@@ -178,18 +178,18 @@
                     throw new Error(`http fehler! status: ${response.status}`);
                 }
                 allTitles = await response.json();
-                console.log(`geladen: ${allTitles.length} vorverarbeitete aufgaben.`);
+                console.log(`Geladen: ${allTitles.length} vorverarbeitete Aufgaben.`);
                 if (allTitles.length > 0) {
                     renderResults(allTitles);
                     searchBar.disabled = false;
                     searchBar.placeholder = `Suche in ${allTitles.length} Aufgaben...`;
                 } else {
-                    resultsContainer.innerHTML = '<li class="no-results">keine aufgabendaten gefunden. führen sie das python-skript aus.</li>';
-                    searchBar.placeholder = "keine daten";
+                    resultsContainer.innerHTML = '<li class="no-results">Keine Aufgabendaten gefunden. Führen sie das Python-Skript aus.</li>';
+                    searchBar.placeholder = "Keine Daten";
                 }
             } catch (error) {
-                console.error("fehler beim laden der vorverarbeiteten daten:", error);
-                resultsContainer.innerHTML = '<li class="no-results">fehler beim laden der aufgabendaten. bitte versuchen sie es später erneut oder überprüfen sie die konsolle.</li>';
+                console.error("Fehler beim Laden der vorverarbeiteten Daten:", error);
+                resultsContainer.innerHTML = '<li class="no-results">Fehler beim Laden der Aufgabendaten. Bitte versuchen sie es später erneut oder überprüfen sie die Konsole.</li>';
                 searchBar.disabled = true;
                 searchBar.placeholder = "laden fehlgeschlagen";
             }
@@ -207,7 +207,7 @@
             resultsContainer.innerHTML = '';
             titles.sort((a, b) => a.title.localeCompare(b.title));
             if (titles.length === 0) {
-                const message = searchBar.value.trim() !== "" ? 'keine aufgaben entsprechen ihrer suche.' : 'keine aufgabendaten verfügbar.';
+                const message = searchBar.value.trim() !== "" ? 'Keine Aufgaben entsprechen ihrer Suche.' : 'Keine Aufgabendaten verfügbar.';
                 resultsContainer.innerHTML = `<li class="no-results">${message}</li>`;
                 return;
             }
@@ -218,7 +218,7 @@
                 li.dataset.page = item.page;
                 li.innerHTML = `<span class="result-title">${escapeHtml(item.title)}</span>
                     <div class="result-details">
-                        Gefunden in: <span class="result-filename">${escapeHtml(item.filename)}</span> – Seite ${item.page}
+                        gefunden in: <span class="result-filename">${escapeHtml(item.filename)}</span> – seite ${item.page}
                     </div>`;
                 li.addEventListener('click', handleResultClick);
                 resultsContainer.appendChild(li);
